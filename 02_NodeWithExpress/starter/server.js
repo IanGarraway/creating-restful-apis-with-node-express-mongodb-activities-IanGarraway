@@ -10,6 +10,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+import bodyParser from 'body-parser';
 
 dotenv.config();
 
@@ -21,6 +22,8 @@ import { router as addTodo } from './routes/addTodo.js';
 const port = process.env.PORT;
 const host = process.env.HOST;
 const app = express();
+
+app.use(bodyParser.json());
 
 const main = async () => {
     console.log(`Connecting to DB @ $${process.env.DB_URI}`);
